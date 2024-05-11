@@ -1,0 +1,22 @@
+
+}#Layout {
+    -fx-grid-lines-visible: false;
+    -fx-hgap: 5;
+    -fx-vgap: 5;
+    -fx-padding: 10;
+    -fx-alignment: center;
+    -fx-background-color: #262626;
+}
+
+#Buttons {
+    -fx-pref-columns: 6;
+    -fx-pref-tile-width: 75;
+    -fx-hgap: 5;
+    -fx-vgap: 5;
+}
+
+.button {
+    -fx-font: bold 12pt "Poppins";
+    -fx-background-color: #737373;
+    -fx-text-fill: white;
+}
