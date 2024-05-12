@@ -1,13 +1,7 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-// atm project Main class
-// The code here creates the ATM GUI interface and model functionality, but the methods
-// in the BankAccount class which actually do the banking functions are incomplete.
-// The lab class exercise (with tutor support) is to complete the BankAccount.
-// The assessment project is to add further functionality as discussed in lectures and 
-// seminars. Tutors may not help directly with this but will talk you through examples and
-// answer questions.
+
 public class Main extends Application
 {
     public static void main( String args[] )
@@ -23,14 +17,16 @@ public class Main extends Application
         // set up debugging and print initial debugging message
         Debug.set(true);             
         Debug.trace("atm starting"); 
-        Debug.trace("Main::start"); 
-        
+        Debug.trace("Main::start");
+        //make the window a fixed size
+        window.setResizable(false);
+
         // Create a Bank object for this ATM
         Bank b = new Bank();
         // add some test bank accounts
         b.addBankAccount(10001, 11111, 100);
         b.addBankAccount(10002, 22222, 50);
-        b.addBankAccount(1, 2, 200);
+        b.addBankAccount(1, 1, 200);
 
         // Create the Model, View and Controller objects
         Model model = new Model(b);   // the model needs the Bank object to 'talk to' the bank

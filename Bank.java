@@ -11,7 +11,7 @@
 public class Bank
 {
     // Instance variables containing the bank information
-    int maxAccounts = 10;       // maximum number of accounts the bank can hold
+    int maxAccounts = 15;       // maximum number of accounts the bank can hold
     int numAccounts = 0;        // the number of accounts currently in the bank
     BankAccount[] accounts = new BankAccount[maxAccounts];  // array to hold the bank accounts
     BankAccount account = null; // currently logged in acccount ('null' if no-one is logged in)
@@ -144,6 +144,16 @@ public class Bank
             return account.getHistory();
         } else {
             return "Not logged in";
+        }
+    }
+
+    public boolean newAccount(int accNumber, int accPasswd) {
+        if (numAccounts < maxAccounts) {
+            accounts[numAccounts] = new BankAccount(accNumber, accPasswd, 0);
+            numAccounts++;
+            return true;
+        } else {
+            return false;
         }
     }
 }

@@ -5,8 +5,7 @@
 // This class contains methods which you need to complete to make the basic ATM work.
 // Tutors can help you get this part working in lab sessions. 
 
-// If you choose the ATM for your project, you should make other modifications to 
-// the system yourself, based on similar examples we will cover in lectures and labs.
+
 public class BankAccount
 {
     public int accNumber = 0;

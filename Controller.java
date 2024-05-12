@@ -45,6 +45,10 @@ public class Controller
         case "His":
             model.processHistory();
             break;
+            case "New":
+                model.processNewAccount();
+                break;
+
         case "Fin":
             model.processFinish();
             break;

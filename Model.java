@@ -13,7 +13,8 @@ public class Model
     final String ACCOUNT_NO = "account_no";
     final String PASSWORD = "password";
     final String LOGGED_IN = "logged_in";
-
+    final String NEW_ACC = "new_acc";
+    final String NEW_PASS = "new_pass";
     // variables representing the ATM model
     String state = ACCOUNT_NO;      // the state it is currently in
     int  number = 0;                // current number displayed in GUI (as a number, not a string)
@@ -23,7 +24,10 @@ public class Model
     // These three are what are shown on the View display
     String title = "Bank ATM";      // The contents of the title message
     String display1 = null;         // The contents of the Message 1 box (a single line)
-    String display2 = null;         // The contents of the Message 2 box (may be multiple lines)
+    String display2 = null;         // The contents of the Message 2 box (maybe multiple lines)
+
+
+
 
     // The other parts of the model-view-controller setup
     public View view;
@@ -89,12 +93,12 @@ public class Model
     // (when you log out)
     public void processEnter()
     {
-        // Enter was pressed - what we do depends what state the ATM is already in
+        // Enter was pressed - what we do depends on what state the ATM is already in
         switch ( state )
         {
             case ACCOUNT_NO:
                 // we were waiting for a complete account number - save the number we have
-                // reset the tyed in number to 0 and change to the state where we are expecting 
+                // reset the typed in number to 0 and change to the state where we are expecting
                 // a password
                 accNumber = number;
                 number = 0;
@@ -105,7 +109,7 @@ public class Model
                 break;
             case PASSWORD:
                 // we were waiting for a password - save the number we have as the password
-                // and then cotnact the bank with accumber and accPasswd to try and login to
+                // and then contact the bank with accNumber and accPasswd to try and login to
                 // an account
                 accPasswd = number;
                 number = 0;
@@ -117,6 +121,35 @@ public class Model
                     setState(LOGGED_IN);
                     display2 = "Accepted\n" +
                     "Now enter the transaction you require";
+                } else {
+                    initialise("Unknown account/password");
+                }
+                break;
+            case NEW_ACC:
+                // we were waiting for a new account number - save the number we have
+                // reset the typed in number to 0 and change to the state where we are expecting
+                // a password
+                accNumber = number;
+                number = 0;
+                setState(NEW_PASS);
+                display1 = "";
+                display2 = "Now enter your new password\n" +
+                "Followed by \"Ent\"";
+                break;
+            case NEW_PASS:
+                // we were waiting for a new password - save the number we have as the password
+                // and then contact the bank with acc number and accPasswd to try and login to
+                // an account
+                accPasswd = number;
+                number = 0;
+                display1 = "";
+                // now check the account/password combination. If it's ok go into the LOGGED_IN
+                // state, otherwise go back to the start (by re-initialsing)
+                if ( bank.newAccount(accNumber, accPasswd) )
+                {
+                    setState(ACCOUNT_NO);
+                    display2 = "Accepted\n" +
+                    "Now enter your account number";
                 } else {
                     initialise("Unknown account/password");
                 }
@@ -187,6 +220,22 @@ public class Model
         }
         display();  // update the GUI
     }
+
+    public void processNewAccount()
+    { //create a process to add a new bank account using the methods made in Bank.java
+        if (state.equals(ACCOUNT_NO) ) {
+            setState(NEW_ACC);
+            number = 0;
+            display2 = "Enter your new account number\n" +
+            "Followed by \"Ent\"";
+
+        } else {
+            initialise("You are not in the correct state");
+        }
+        display();  // update the GUI
+    }
+
+
 
     // Finish button - check we are logged in and if so log out
     public void processFinish()

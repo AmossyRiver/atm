@@ -13,10 +13,11 @@ import javafx.scene.text.*;
 import javafx.stage.Stage;
 import javafx.util.*;
 
+
 class View
 {
-    int H = 420;         // Height of window pixels 
-    int W = 500;         // Width  of window pixels 
+    int H = 520;         // Height of window pixels
+    int W = 520;         // Width  of window pixels
 
     // variables for components of the user interface
     Label      title;         // Title area (not the window title)
@@ -77,7 +78,7 @@ class View
         // The number of button per row should match what is set in 
         // the css file
         String labels[][] = {
-                {"7",    "8",  "9",  "",  "Dep",  ""},
+                {"7",    "8",  "9",  "",  "Dep",  "New"},
                 {"4",    "5",  "6",  "",  "W/D",  ""},
                 {"1",    "2",  "3",  "",  "Bal",  "Fin"},
                 {"CLR",  "0",  "",   "",  "His",  "Ent"} };
