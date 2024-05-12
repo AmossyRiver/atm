@@ -222,7 +222,7 @@ public class Model
     }
 
     public void processNewAccount()
-    { //create a process to add a new bank account using the methods made in Bank.java
+    { //create a process to add a new bank account
         if (state.equals(ACCOUNT_NO) ) {
             setState(NEW_ACC);
             number = 0;
@@ -242,6 +242,7 @@ public class Model
     {
         if (state.equals(LOGGED_IN) ) {
             // go back to the log in state
+            Transaction.accountHistory.clear();
             setState(ACCOUNT_NO);
             number = 0;
             display2 = "Welcome: Enter your account number";

@@ -1,9 +1,9 @@
 @font-face {
     font-family: "Poppins";
-    src: url("Poppins-Bold.ttf");
+    src: url("Poppins-Regular.ttf");
 }
 .root {
-    -fx-font: 10pt "Poppins";
+    -fx-font: 12pt "Poppins";
 }
 #Layout {
     -fx-grid-lines-visible: false;
@@ -11,7 +11,7 @@
     -fx-vgap: 5;
     -fx-padding: 10;
     -fx-alignment: center;
-    -fx-background-color: #262626;
+    -fx-background-color:#121212FF;
 }
 
 #Buttons {
@@ -23,7 +23,7 @@
 
 .button {
     -fx-font: bold 12pt "Poppins";
-    -fx-background-color: #737373;
+    -fx-background-color:#2B2B2CFF;
     -fx-text-fill: white;
 }
 #title {
@@ -33,4 +33,13 @@
 .label {
     -fx-font: bold 12pt "Poppins";
     -fx-text-fill: white;
+}
+#message {
+    -fx-background-color: #3f3f3f;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-width: 2px;
+    -fx-border-color: #000000;
+}
+#reply {
+    -fx-background-color: #3f3f3f;
 }
